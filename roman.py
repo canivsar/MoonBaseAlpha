@@ -16,16 +16,14 @@ def pattern( pat ):
     yield V + I + I + I
     yield I + X
 
-def pattern_with_prefix( prefix, pat ):
+def PrefixPattern( prefix, pat ):
     for i in pattern( pat ):
         yield prefix + i
         
-def one_to_a_thousand( prefix ):
-    for j in pattern_with_prefix( prefix, "XLC" ):
-        for i in pattern_with_prefix( j, "IVX" ):
-            print  i
-    
-for m in xrange(4):
-    for k in pattern_with_prefix( 'M'*m, "CDM" ):
-        one_to_a_thousand( k )
+for T in xrange(4):
+    for M in PrefixPattern( 'M'*T, "CDM" ):
+        for C in PrefixPattern( M, "XLC" ):
+            for I in PrefixPattern( C, "IVX" ):
+                print  I
+
         
