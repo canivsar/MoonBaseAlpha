@@ -1,0 +1,1 @@
+git config --global core.editor open --wait-apps --new -a /Applications/myapps/Aquamacs.app
