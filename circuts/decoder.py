@@ -44,13 +44,42 @@ class cgate:
         cgate.all.append( self )
     def is_external(self):
         return len( self.groups ) < 5
+    def is_internal(self):
+        x = len( self.groups ) > 5
+        return x
+    
+    def update_links(self):
+        if self.is_internal():
+            self.o1 = int ( self.groups[4] )
+        else:
+            self.o1 = int ( self.groups[2] )
+            
+        self.o1s_input_label = cgate.all[ self.o1 ].input_label(self.id)
+
+        if self.is_internal():
+            self.o2 = int ( self.groups[6] )
+            self.o2s_input_label = cgate.all[ self.o2 ].input_label(self.id)
+        else:
+            self.o2 = None
+            self.o2s_input_label = None
+            
+    def input_label(self, id):
+        if int(self.groups[0]) == id:
+            return self.groups[1]
+        if self.is_external():
+            raise "bad connection 1"
+        if int(self.groups[2]) == id:
+            return self.groups[3]
+        print "bad connection from ",self.id, id
+        raise Exception("bad connection 2")
+
         
 middle = circut.split(":")[1]
 for gate in middle.split(","):
     m = re.match(r"([\d]+)([RL])([\d]+)([RL])0#([\d]+)([RL])([\d]+)([RL])", gate )
     if m:
-        cgate( gate, m.groups() )
-        print "# %20s"%gate, m.groups()
+        x = cgate( gate, m.groups() )
+        print "# %d %20s"%(x.id,gate), m.groups()
     else:
         m = re.match("X([\d]+)([RL])0#X([\d]+)([RL])", gate )
         if m:
@@ -60,17 +89,18 @@ for gate in middle.split(","):
             print "# %20s"%gate, "no match"
 
 for g in  cgate.all :
+    g.update_links()
     if g.is_external():
         print "# External Gate", g.text, g.groups
         print 'g%d [label="External g%d", shape=square ];'%(g.id, g.id )
         print 'g%d -> g%s [label="I1 %s", color=green ];'%(g.id, g.groups[0], g.groups[1] )
-        print 'g%d -> g%s [label="o1 %s"];'%(g.id, g.groups[2], g.groups[3] )
+        print 'g%d -> g%s [label="o1 %s - %s"];'%(g.id, g.groups[2], g.groups[3], g.o1s_input_label )
     else:
         print "#", g.text, g.groups
-        print 'g%d -> g%s [label="I1 %s", color=green];'%(g.id, g.groups[0], g.groups[1] )
-        print 'g%d -> g%s [label="I2 %s", color=green];'%(g.id, g.groups[2], g.groups[3] )
-        print 'g%d -> g%s [label="o1 %s"];'%(g.id, g.groups[4], g.groups[5] )
-        print 'g%d -> g%s [label="o2 %s"];'%(g.id, g.groups[6], g.groups[7] )
+        #print 'g%d -> g%s [label="I1 %s", color=green];'%(g.id, g.groups[0], g.groups[1] )
+        #print 'g%d -> g%s [label="I2 %s", color=green];'%(g.id, g.groups[2], g.groups[3] )
+        print 'g%d -> g%s [label="o1 %s - %s"];'%(g.id, g.groups[4], g.groups[5], g.o1s_input_label )
+        print 'g%d -> g%s [label="o2 %s - %s"];'%(g.id, g.groups[6], g.groups[7], g.o2s_input_label )
 
 
 

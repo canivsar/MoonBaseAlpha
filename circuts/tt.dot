@@ -1,121 +1,83 @@
 digraph G {
-#        12R13R0#1R12R ('12', 'R', '13', 'R', '1', 'R', '12', 'R')
-#          14R0L0#4R9L ('14', 'R', '0', 'L', '4', 'R', '9', 'L')
-#          9R10R0#3L8L ('9', 'R', '10', 'R', '3', 'L', '8', 'L')
-#          2L17R0#5L9R ('2', 'L', '17', 'R', '5', 'L', '9', 'R')
-#        15R1L0#10R13R ('15', 'R', '1', 'L', '10', 'R', '13', 'R')
-#         3L18R0#6L15L ('3', 'L', '18', 'R', '6', 'L', '15', 'L')
-#        5L11R0#13L12L ('5', 'L', '11', 'R', '13', 'L', '12', 'L')
-#        19R16R0#11R8R ('19', 'R', '16', 'R', '11', 'R', '8', 'R')
-#         2R7R0#11L10L ('2', 'R', '7', 'R', '11', 'L', '10', 'L')
-#          1R3R0#18L2L ('1', 'R', '3', 'R', '18', 'L', '2', 'L')
-#          8R4L0#16L2R ('8', 'R', '4', 'L', '16', 'L', '2', 'R')
-#          8L7L0#15R6R ('8', 'L', '7', 'L', '15', 'R', '6', 'R')
-#          6R0R0#14L0L ('6', 'R', '0', 'R', '14', 'L', '0', 'L')
-#          6L4R0#14R0R ('6', 'L', '4', 'R', '14', 'R', '0', 'R')
-#        12L13L0#17L1L ('12', 'L', '13', 'L', '17', 'L', '1', 'L')
-#         5R11L0#16R4L ('5', 'R', '11', 'L', '16', 'R', '4', 'L')
-#        10L15L0#17R7R ('10', 'L', '15', 'L', '17', 'R', '7', 'R')
-#        14L16L0#18R3R ('14', 'L', '16', 'L', '18', 'R', '3', 'R')
-#         9L17L0#19R5R ('9', 'L', '17', 'L', '19', 'R', '5', 'R')
+# 0        12R13R0#1R12R ('12', 'R', '13', 'R', '1', 'R', '12', 'R')
+# 1          14R0L0#4R9L ('14', 'R', '0', 'L', '4', 'R', '9', 'L')
+# 2          9R10R0#3L8L ('9', 'R', '10', 'R', '3', 'L', '8', 'L')
+# 3          2L17R0#5L9R ('2', 'L', '17', 'R', '5', 'L', '9', 'R')
+# 4        15R1L0#10R13R ('15', 'R', '1', 'L', '10', 'R', '13', 'R')
+# 5         3L18R0#6L15L ('3', 'L', '18', 'R', '6', 'L', '15', 'L')
+# 6        5L11R0#13L12L ('5', 'L', '11', 'R', '13', 'L', '12', 'L')
+# 7        19R16R0#11R8R ('19', 'R', '16', 'R', '11', 'R', '8', 'R')
+# 8         2R7R0#11L10L ('2', 'R', '7', 'R', '11', 'L', '10', 'L')
+# 9          1R3R0#18L2L ('1', 'R', '3', 'R', '18', 'L', '2', 'L')
+# 10          8R4L0#16L2R ('8', 'R', '4', 'L', '16', 'L', '2', 'R')
+# 11          8L7L0#15R6R ('8', 'L', '7', 'L', '15', 'R', '6', 'R')
+# 12          6R0R0#14L0L ('6', 'R', '0', 'R', '14', 'L', '0', 'L')
+# 13          6L4R0#14R0R ('6', 'L', '4', 'R', '14', 'R', '0', 'R')
+# 14        12L13L0#17L1L ('12', 'L', '13', 'L', '17', 'L', '1', 'L')
+# 15         5R11L0#16R4L ('5', 'R', '11', 'L', '16', 'R', '4', 'L')
+# 16        10L15L0#17R7R ('10', 'L', '15', 'L', '17', 'R', '7', 'R')
+# 17        14L16L0#18R3R ('14', 'L', '16', 'L', '18', 'R', '3', 'R')
+# 18         9L17L0#19R5R ('9', 'L', '17', 'L', '19', 'R', '5', 'R')
 #            X18L0#X7L ('18', 'L', '7', 'L')
 # 12R13R0#1R12R ('12', 'R', '13', 'R', '1', 'R', '12', 'R')
-g0 -> g12 [label="I1 R", color=green];
-g0 -> g13 [label="I2 R", color=green];
-g0 -> g1 [label="o1 R"];
-g0 -> g12 [label="o2 R"];
+g0 -> g1 [label="o1 R - L"];
+g0 -> g12 [label="o2 R - R"];
 # 14R0L0#4R9L ('14', 'R', '0', 'L', '4', 'R', '9', 'L')
-g1 -> g14 [label="I1 R", color=green];
-g1 -> g0 [label="I2 L", color=green];
-g1 -> g4 [label="o1 R"];
-g1 -> g9 [label="o2 L"];
+g1 -> g4 [label="o1 R - L"];
+g1 -> g9 [label="o2 L - R"];
 # 9R10R0#3L8L ('9', 'R', '10', 'R', '3', 'L', '8', 'L')
-g2 -> g9 [label="I1 R", color=green];
-g2 -> g10 [label="I2 R", color=green];
-g2 -> g3 [label="o1 L"];
-g2 -> g8 [label="o2 L"];
+g2 -> g3 [label="o1 L - L"];
+g2 -> g8 [label="o2 L - R"];
 # 2L17R0#5L9R ('2', 'L', '17', 'R', '5', 'L', '9', 'R')
-g3 -> g2 [label="I1 L", color=green];
-g3 -> g17 [label="I2 R", color=green];
-g3 -> g5 [label="o1 L"];
-g3 -> g9 [label="o2 R"];
+g3 -> g5 [label="o1 L - L"];
+g3 -> g9 [label="o2 R - R"];
 # 15R1L0#10R13R ('15', 'R', '1', 'L', '10', 'R', '13', 'R')
-g4 -> g15 [label="I1 R", color=green];
-g4 -> g1 [label="I2 L", color=green];
-g4 -> g10 [label="o1 R"];
-g4 -> g13 [label="o2 R"];
+g4 -> g10 [label="o1 R - L"];
+g4 -> g13 [label="o2 R - R"];
 # 3L18R0#6L15L ('3', 'L', '18', 'R', '6', 'L', '15', 'L')
-g5 -> g3 [label="I1 L", color=green];
-g5 -> g18 [label="I2 R", color=green];
-g5 -> g6 [label="o1 L"];
-g5 -> g15 [label="o2 L"];
+g5 -> g6 [label="o1 L - L"];
+g5 -> g15 [label="o2 L - R"];
 # 5L11R0#13L12L ('5', 'L', '11', 'R', '13', 'L', '12', 'L')
-g6 -> g5 [label="I1 L", color=green];
-g6 -> g11 [label="I2 R", color=green];
-g6 -> g13 [label="o1 L"];
-g6 -> g12 [label="o2 L"];
+g6 -> g13 [label="o1 L - L"];
+g6 -> g12 [label="o2 L - R"];
 # 19R16R0#11R8R ('19', 'R', '16', 'R', '11', 'R', '8', 'R')
-g7 -> g19 [label="I1 R", color=green];
-g7 -> g16 [label="I2 R", color=green];
-g7 -> g11 [label="o1 R"];
-g7 -> g8 [label="o2 R"];
+g7 -> g11 [label="o1 R - L"];
+g7 -> g8 [label="o2 R - R"];
 # 2R7R0#11L10L ('2', 'R', '7', 'R', '11', 'L', '10', 'L')
-g8 -> g2 [label="I1 R", color=green];
-g8 -> g7 [label="I2 R", color=green];
-g8 -> g11 [label="o1 L"];
-g8 -> g10 [label="o2 L"];
+g8 -> g11 [label="o1 L - L"];
+g8 -> g10 [label="o2 L - R"];
 # 1R3R0#18L2L ('1', 'R', '3', 'R', '18', 'L', '2', 'L')
-g9 -> g1 [label="I1 R", color=green];
-g9 -> g3 [label="I2 R", color=green];
-g9 -> g18 [label="o1 L"];
-g9 -> g2 [label="o2 L"];
+g9 -> g18 [label="o1 L - L"];
+g9 -> g2 [label="o2 L - R"];
 # 8R4L0#16L2R ('8', 'R', '4', 'L', '16', 'L', '2', 'R')
-g10 -> g8 [label="I1 R", color=green];
-g10 -> g4 [label="I2 L", color=green];
-g10 -> g16 [label="o1 L"];
-g10 -> g2 [label="o2 R"];
+g10 -> g16 [label="o1 L - L"];
+g10 -> g2 [label="o2 R - R"];
 # 8L7L0#15R6R ('8', 'L', '7', 'L', '15', 'R', '6', 'R')
-g11 -> g8 [label="I1 L", color=green];
-g11 -> g7 [label="I2 L", color=green];
-g11 -> g15 [label="o1 R"];
-g11 -> g6 [label="o2 R"];
+g11 -> g15 [label="o1 R - L"];
+g11 -> g6 [label="o2 R - R"];
 # 6R0R0#14L0L ('6', 'R', '0', 'R', '14', 'L', '0', 'L')
-g12 -> g6 [label="I1 R", color=green];
-g12 -> g0 [label="I2 R", color=green];
-g12 -> g14 [label="o1 L"];
-g12 -> g0 [label="o2 L"];
+g12 -> g14 [label="o1 L - L"];
+g12 -> g0 [label="o2 L - R"];
 # 6L4R0#14R0R ('6', 'L', '4', 'R', '14', 'R', '0', 'R')
-g13 -> g6 [label="I1 L", color=green];
-g13 -> g4 [label="I2 R", color=green];
-g13 -> g14 [label="o1 R"];
-g13 -> g0 [label="o2 R"];
+g13 -> g14 [label="o1 R - L"];
+g13 -> g0 [label="o2 R - R"];
 # 12L13L0#17L1L ('12', 'L', '13', 'L', '17', 'L', '1', 'L')
-g14 -> g12 [label="I1 L", color=green];
-g14 -> g13 [label="I2 L", color=green];
-g14 -> g17 [label="o1 L"];
-g14 -> g1 [label="o2 L"];
+g14 -> g17 [label="o1 L - L"];
+g14 -> g1 [label="o2 L - R"];
 # 5R11L0#16R4L ('5', 'R', '11', 'L', '16', 'R', '4', 'L')
-g15 -> g5 [label="I1 R", color=green];
-g15 -> g11 [label="I2 L", color=green];
-g15 -> g16 [label="o1 R"];
-g15 -> g4 [label="o2 L"];
+g15 -> g16 [label="o1 R - L"];
+g15 -> g4 [label="o2 L - R"];
 # 10L15L0#17R7R ('10', 'L', '15', 'L', '17', 'R', '7', 'R')
-g16 -> g10 [label="I1 L", color=green];
-g16 -> g15 [label="I2 L", color=green];
-g16 -> g17 [label="o1 R"];
-g16 -> g7 [label="o2 R"];
+g16 -> g17 [label="o1 R - L"];
+g16 -> g7 [label="o2 R - R"];
 # 14L16L0#18R3R ('14', 'L', '16', 'L', '18', 'R', '3', 'R')
-g17 -> g14 [label="I1 L", color=green];
-g17 -> g16 [label="I2 L", color=green];
-g17 -> g18 [label="o1 R"];
-g17 -> g3 [label="o2 R"];
+g17 -> g18 [label="o1 R - L"];
+g17 -> g3 [label="o2 R - R"];
 # 9L17L0#19R5R ('9', 'L', '17', 'L', '19', 'R', '5', 'R')
-g18 -> g9 [label="I1 L", color=green];
-g18 -> g17 [label="I2 L", color=green];
-g18 -> g19 [label="o1 R"];
-g18 -> g5 [label="o2 R"];
+g18 -> g19 [label="o1 R - L"];
+g18 -> g5 [label="o2 R - R"];
 # External Gate X18L0#X7L ('18', 'L', '7', 'L')
 g19 [label="External g19", shape=square ];
 g19 -> g18 [label="I1 L", color=green ];
-g19 -> g7 [label="o1 L"];
+g19 -> g7 [label="o1 L - R"];
 }
