@@ -65,11 +65,11 @@ class cgate:
             
     def input_label(self, id):
         if int(self.groups[0]) == id:
-            return self.groups[1]
+            return "i1"+self.groups[1]
         if self.is_external():
             raise "bad connection 1"
         if int(self.groups[2]) == id:
-            return self.groups[3]
+            return "i2"+self.groups[3]
         print "bad connection from ",self.id, id
         raise Exception("bad connection 2")
 
