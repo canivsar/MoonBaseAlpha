@@ -3,3 +3,31 @@
 X0L0#X0L:
 1L
 
+
+submitted:
+
+first.txt
+
+1L:
+
+1R0R0#1R0R,
+
+X0L0#X0L:
+
+1L
+
+------------------------ 
+
+Result:
+
+circuit output starts with
+
+    01022210002211022
+
+this is an illegal prefix.
+
+Car:
+
+0
+
+ 
