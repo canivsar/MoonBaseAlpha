@@ -1,0 +1,10 @@
+see wave from Marshall at 6:32
+Also - the source for these is in compiler.py 
+a6 -     6L:  11012202011120000
+a5 -     5L: 10111112002122100 
+a-a-a-a  4L: 12100202001211011
+a-a-a    3L: 11021202011020020
+a-a      2L: 10210111022002022
+a        1L: 12211010022120012
+
+
