@@ -108,3 +108,7 @@ Car:0
 
 Fuel:
 
+
+
+
+-fno-stack-protector
