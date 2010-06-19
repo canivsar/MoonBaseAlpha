@@ -1,16 +1,6 @@
 
-truth = {
-  (0, 1) : [0, 0]
-, (1, 2) : [0, 0]
-, (0, 0) : [0, 0]
-, (2, 1) : [0, 0]
-, (0, 2) : [0, 0]
-, (2, 0) : [0, 0]
-, (2, 2) : [0, 0]
-, (1, 0) : [0, 0]
-, (1, 1) : [0, 0]
-}
 
+import truth_table
 
 def generate_default_truth_table():
     tt = {}
@@ -20,7 +10,9 @@ def generate_default_truth_table():
     
     print "truth = {"
     comma = " "
-    for i in tt:
+    kk = tt.keys()
+    kk.sort()
+    for i in kk:
         print "%s %s : %s"%( comma, i, tt[i] )
         comma = ","
     print "}"
