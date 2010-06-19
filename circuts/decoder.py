@@ -118,6 +118,8 @@ def decode( circut ):
 
 
 def process_input( inputbits, gold ):
+    print "------------------------------------------------------------------"
+    print "Gold", [ int(i) for i in list(gold) ]
     print inputbits
     inputbits = [str(i) for i in inputbits]
     e = cgate.all[-1]
@@ -134,6 +136,7 @@ def process_input( inputbits, gold ):
             i1 = cgate.all[ int(n.i1node) ].output_val( n.i1side )
             i2 = cgate.all[ int(n.i2node) ].output_val( n.i2side )
             n.o1, n.o2 = truth[ (i1,i2 ) ]
+            print n.id, (i1,i2) ,"->",n.o1, n.o2
 
 
         result.append( e_o1.output_val( e.i1side ) )
@@ -187,5 +190,6 @@ X0L0#X0L:
 
 graph_dump = False
 do_all( circuit19, input19, "00000000000000000" )
+graph_dump = 1
 do_all( circuit3, input_ee, gold3 )
 
