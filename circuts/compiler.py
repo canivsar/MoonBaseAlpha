@@ -36,6 +36,36 @@ E -> 0R"""
 """0 -> 0L, 1L
 1 -> 1R, 2E
 E -> 0R""" 
+,
+"""0 -> 0L, 1R
+1 -> 1L, 2R
+2 -> 2L, IE
+E -> 0R"""
+
+,
+"""0 -> 0L, 1R
+1 -> 1L, 2R
+2 -> 2L, 3R
+3 -> 3L, IE
+E -> 0R"""
+
+
+,
+"""0 -> 0L, 1R
+1 -> 1L, 2R
+2 -> 2L, 3R
+3 -> 3L, 4R
+4 -> 4L, IE
+E -> 0R"""
+,
+"""0 -> 0L, 1R
+1 -> 1L, 2R
+2 -> 2L, 3R
+3 -> 3L, 4R
+4 -> 4L, 5R
+5 -> 5L, IE
+E -> 0R """
+
 ]
 
 bad = [
@@ -43,9 +73,10 @@ bad = [
 1 -> 2E, 1R
 E -> 0R"""
 
-
 ]
 import re
+
+
 
 class ccompilegate:
     allgates = {}
@@ -122,7 +153,7 @@ def compile ( source ):
 
     x = source.split("\n")
     for inputs in x:
-        m = re.match(r"([\d]+)\s*->\s*([\dI]+)([ERL])\s*,\s*([\d]+)([ERL])", inputs )
+        m = re.match(r"([\d]+)\s*->\s*([\dI]+)([ERL])\s*,\s*([I\d]+)([ERL])", inputs )
         if m:
             g = m.groups()
             #print g
