@@ -2,6 +2,8 @@
 
 
 import re
+import sys
+import random
 from truth_table import truth
 
 #print circut.split(":")
@@ -17,6 +19,9 @@ from truth_table import truth
 class cgate:
     all = []
     count = 0
+    default_o1 = 0
+    default_o2 = 0
+
     def __init__(self, text, grps ):
         self.text = text
         self.groups = grps
@@ -129,30 +134,44 @@ def process_input( inputbitsx, gold ):
     print inputbitsx, e.i1side
 
     for n in cgate.all:
-        n.o1 = 0
-        n.o2 = 0
+        n.o1 = cgate.default_o1
+        n.o2 = cgate.default_o2
 
     result = []
+    firstbadmatch = None
     #for bit in inputbits:
-    for bit,gld in zip(inputbits, gold):
+    for bit,gld,cycle in zip(inputbits, gold,xrange(999)):
         e.o1 = int(bit)
         for n in cgate.all[:-1]: # last node is external - handle as special case
             i1 = cgate.all[ int(n.i1node) ].output_val( n.i1side )
             i2 = cgate.all[ int(n.i2node) ].output_val( n.i2side )
             n.o1, n.o2 = truth[ (i1,i2 ) ]
             goodmatch = e_o1.output_val( e.i1side ) == gld
-            if goodmatch: goodmatch =""
-            print n.id, (i1,i2) ,"->",n.o1, n.o2, "      > ", e_o1.output_val( e.i1side ), gld, goodmatch
+            if goodmatch:
+                goodmatch =" "
+            print n.id, (i1,i2) ,"->",n.o1, n.o2, "      > %02d  "% cycle, e_o1.output_val( e.i1side ), gld, goodmatch
+            #if we are hunting for bad matches....
+            if not goodmatch and not firstbadmatch:
+                if e.i1side == "L":
+                    firstbadmatch = ( cycle, (i1, i2 ), list(( gld, n.o2 ) ))
+                else:
+                    firstbadmatch = ( cycle, (i1, i2 ), list(( n.o1, gld )) )
+                print "                           ", firstbadmatch
+                #return firstbadmatch
 
 
         result.append( e_o1.output_val( e.i1side ) )
     print "Base", result
     print "Gold", gold
 
+    if not firstbadmatch:
+        firstbadmatch = ( 17, (0,0), truth[ (0,0 ) ] )
+    return result, firstbadmatch
+
 
 def do_all( circuit, input, gold ):
     decode( circuit )
-    process_input( input, gold )
+    return process_input( input, gold )
 
 
 
@@ -183,7 +202,8 @@ X18L0#X7L:
 
 
 
-input_ee = "02120112100002120"
+strings  = "02120112100002120"
+
 gold3 = "01110001122221222"
 circuit3 = """
 3L:
@@ -230,8 +250,36 @@ graph_dump = False
 #do_all( circuit3, input_ee, gold3 )
 
 short_ee = "021201"
+input_ee = "02120112100002120"
+
 do_all( circuit_a, short_ee, gold_a )
 do_all( circuit_b, short_ee, gold_b )
 do_all( circuit_c, short_ee, gold_c )
 do_all( circuit_d, short_ee, gold_d )
+sys.exit(0)
 
+for do1 in range(3):
+    cgate.default_o1 = do1
+    for do2 in range(3):
+        cgate.default_o2 = do2
+        for i in truth:
+            truth[i] = [0,0]
+            
+        for i in xrange(1000):
+            
+            r = []
+            r.append( do_all( circuit_a, input_ee, gold_a ) )
+            r.append( do_all( circuit_b, input_ee, gold_b ) )
+            r.append( do_all( circuit_c, input_ee, gold_c ) )
+            r.append( do_all( circuit_d, input_ee, gold_d ) )
+            r.sort()
+            print r
+            metric = sum( i[0] for i in r )
+            metric = r[0][0]
+            
+            fix = r[0]
+            fix = random.choice(r)
+            print " metric = %3d"% metric, "(%d,%d) Fixing truth at "%(do1,do2),fix
+            truth[ fix[1] ] = fix[2]
+            
+        
