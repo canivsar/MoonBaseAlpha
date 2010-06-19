@@ -119,31 +119,35 @@ def decode( circut ):
     myprint(  "}" )
 
 
-def process_input( inputbits, gold ):
+def process_input( inputbitsx, gold ):
     print "------------------------------------------------------------------"
-    print "Gold", [ int(i) for i in list(gold) ]
-    print inputbits
-    inputbits = [str(i) for i in inputbits]
+    inputbits = [str(i) for i in inputbitsx]
+    gold = [ int(i) for i in list(gold) ]
     e = cgate.all[-1]
     e_o1 = cgate.all[ int( e.i1node ) ]
+
+    print inputbitsx, e.i1side
 
     for n in cgate.all:
         n.o1 = 0
         n.o2 = 0
 
     result = []
-    for bit in inputbits:
+    #for bit in inputbits:
+    for bit,gld in zip(inputbits, gold):
         e.o1 = int(bit)
         for n in cgate.all[:-1]: # last node is external - handle as special case
             i1 = cgate.all[ int(n.i1node) ].output_val( n.i1side )
             i2 = cgate.all[ int(n.i2node) ].output_val( n.i2side )
             n.o1, n.o2 = truth[ (i1,i2 ) ]
-            print n.id, (i1,i2) ,"->",n.o1, n.o2
+            goodmatch = e_o1.output_val( e.i1side ) == gld
+            if goodmatch: goodmatch =""
+            print n.id, (i1,i2) ,"->",n.o1, n.o2, "      > ", e_o1.output_val( e.i1side ), gld, goodmatch
 
 
         result.append( e_o1.output_val( e.i1side ) )
-        print "Base", result
-    print "Gold", [ int(i) for i in list(gold) ]
+    print "Base", result
+    print "Gold", gold
 
 
 def do_all( circuit, input, gold ):
@@ -203,6 +207,24 @@ circuit_b ="""
 X0L0#X0L:
 1L
 """
+# 0 -> IE, 0L
+# E -> 0R
+gold_c = "01120011102221120"
+circuit_c = """
+1L:
+0R1R0#1R0L,
+X0L0#X0R:
+1L
+"""
+#0 -> 0R,IE
+#E -> 0L
+gold_d = "12122221020010011"
+circuit_d = """
+1L:
+1R0L0#0R1R,
+X0R0#X0L:
+1L
+"""
 graph_dump = False
 #do_all( circuit19, input19, "00000000000000000" )
 #do_all( circuit3, input_ee, gold3 )
@@ -210,4 +232,6 @@ graph_dump = False
 short_ee = "021201"
 do_all( circuit_a, short_ee, gold_a )
 do_all( circuit_b, short_ee, gold_b )
+do_all( circuit_c, short_ee, gold_c )
+do_all( circuit_d, short_ee, gold_d )
 
