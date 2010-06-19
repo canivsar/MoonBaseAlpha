@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 circut = """19L:
 12R13R0#1R12R,
 14R0L0#4R9L,

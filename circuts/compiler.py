@@ -1,3 +1,4 @@
+#!/usr/bin/python
 
 samples = [
 """0 -> IE,0R
@@ -37,12 +38,16 @@ E -> 0R"""
 1 -> 1R, 2E
 E -> 0R""" 
 ,
+# a3
+
 """0 -> 0L, 1R
 1 -> 1L, 2R
 2 -> 2L, IE
 E -> 0R"""
 
 ,
+
+# a4
 """0 -> 0L, 1R
 1 -> 1L, 2R
 2 -> 2L, 3R
@@ -51,6 +56,9 @@ E -> 0R"""
 
 
 ,
+
+# a5
+
 """0 -> 0L, 1R
 1 -> 1L, 2R
 2 -> 2L, 3R
@@ -58,13 +66,31 @@ E -> 0R"""
 4 -> 4L, IE
 E -> 0R"""
 ,
-"""0 -> 0L, 1R
+# a6
+"""
+0 -> 0L, 1R
 1 -> 1L, 2R
 2 -> 2L, 3R
 3 -> 3L, 4R
 4 -> 4L, 5R
 5 -> 5L, IE
-E -> 0R """
+E -> 0R
+"""
+
+,
+
+# a2
+"""
+0 -> 0L, 1R
+1 -> 1L, 2E
+E -> 0R
+"""
+, 
+# a
+"""
+0 -> 0L, 1E
+E -> 0R 
+"""
 
 ]
 
@@ -72,7 +98,6 @@ bad = [
 """0 -> 0L, 1R
 1 -> 2E, 1R
 E -> 0R"""
-
 ]
 import re
 
@@ -153,6 +178,8 @@ def compile ( source ):
 
     x = source.split("\n")
     for inputs in x:
+        if len(inputs)==0:
+            continue
         m = re.match(r"([\d]+)\s*->\s*([\dI]+)([ERL])\s*,\s*([I\d]+)([ERL])", inputs )
         if m:
             g = m.groups()
@@ -194,8 +221,17 @@ def compile ( source ):
     print "%sL"%(c.get_externalnode())
 
 
-for code in samples:
+import sys
+if len(sys.argv) == 1:
+    for code in samples:
+        print "================="
+        print code
+        compile( code )
+else:
+    code = open( sys.argv[1], "rt" ).read()
     print "================="
     print code
     compile( code )
+
+
 
