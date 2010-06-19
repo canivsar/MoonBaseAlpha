@@ -68,6 +68,8 @@ class cgate:
     def output_val( self, side ):
         if side == 'L':
             return self.o1
+        if side == 'R' and self.is_external():
+            return self.o1
         if side == 'R':
             return self.o2
         raise "failure!"
@@ -131,7 +133,7 @@ def process_input( inputbits, gold ):
 
     result = []
     for bit in inputbits:
-        e.o1 = bit
+        e.o1 = int(bit)
         for n in cgate.all[:-1]: # last node is external - handle as special case
             i1 = cgate.all[ int(n.i1node) ].output_val( n.i1side )
             i2 = cgate.all[ int(n.i2node) ].output_val( n.i2side )
@@ -187,9 +189,25 @@ circuit3 = """
 X0L0#X0L:
 3L
 """
-
+gold_a = "12211010022120012"
+circuit_a = """
+1L:
+0L1R0#0L1R,
+X0R0#X0R:
+1L
+"""
+gold_b = "01022210002211022"
+circuit_b ="""
+1L:
+1R0R0#1R0R,
+X0L0#X0L:
+1L
+"""
 graph_dump = False
-do_all( circuit19, input19, "00000000000000000" )
-graph_dump = 1
-do_all( circuit3, input_ee, gold3 )
+#do_all( circuit19, input19, "00000000000000000" )
+#do_all( circuit3, input_ee, gold3 )
+
+short_ee = "021201"
+do_all( circuit_a, short_ee, gold_a )
+do_all( circuit_b, short_ee, gold_b )
 

@@ -24,13 +24,15 @@ E -> 0R
 
 """
 0 -> 1E, 0R
-E -> 0L"""
+E -> 0L
+"""
 ,
 
 
 """
 0 -> 0R, 1E
-E -> 0L"""
+E -> 0L
+"""
 ,
 
 """
@@ -57,6 +59,7 @@ E -> 0R
 # a3
 
 """
+title a3
 0 -> 0L, 1R
 1 -> 1L, 2R
 2 -> 2L, IE
@@ -67,6 +70,7 @@ E -> 0R
 
 # a4
 """
+title a4
 0 -> 0L, 1R
 1 -> 1L, 2R
 2 -> 2L, 3R
@@ -80,6 +84,7 @@ E -> 0R
 # a5
 
 """
+title a5
 0 -> 0L, 1R
 1 -> 1L, 2R
 2 -> 2L, 3R
@@ -90,6 +95,7 @@ E -> 0R
 ,
 # a6
 """
+title a6
 0 -> 0L, 1R
 1 -> 1L, 2R
 2 -> 2L, 3R
@@ -103,6 +109,7 @@ E -> 0R
 
 # a2
 """
+title a2
 0 -> 0L, 1R
 1 -> 1L, 2E
 E -> 0R
@@ -110,6 +117,7 @@ E -> 0R
 , 
 # a
 """
+title a
 0 -> 0L, 1E
 E -> 0R 
 """
@@ -243,6 +251,8 @@ import re
 
 
 class ccompilegate:
+    title = None
+    gold = None
     allgates = {}
     def __init__(self, id, o1node, o1side, o2node, o2side):
         self.id = id
@@ -314,10 +324,18 @@ class ccompilegate:
     
 def compile ( source ):
     ccompilegate.allgates = {}
+    ccompilegate.title = None
+    ccompilegate.gold = None
 
     x = source.split("\n")
     for inputs in x:
         if len(inputs)==0:
+            continue
+        if "title" in inputs.lower():
+            ccompilegate.title = inputs
+            continue
+        if "gold" in inputs.lower():
+            ccompilegate.title = inputs
             continue
         m = re.match(r"([\d]+)\s*->\s*([\dI]+)([ERL])\s*,\s*([I\d]+)([ERL])", inputs )
         if m:
