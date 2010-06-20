@@ -125,13 +125,13 @@ def decode( circut ):
 
 
 def process_input( inputbits, gold ):
-    #print "------------------------------------------------------------------"
+    myprint( "------------------------------------------------------------------")
     #inputbits = [str(i) for i in inputbitsx]
     #gold = [ int(i) for i in list(gold) ]
     e = cgate.all[-1]
     e_o1 = cgate.all[ int( e.i1node ) ]
 
-    #print inputbitsx, e.i1side
+    myprint("%s %s"%( " ".join(inputbits), e.i1side))
 
     for n in cgate.all:
         n.o1 = cgate.default_o1
@@ -149,20 +149,20 @@ def process_input( inputbits, gold ):
             goodmatch = e_o1.output_val( e.i1side ) == gld
             if goodmatch:
                 goodmatch =" "
-            #print n.id, (i1,i2) ,"->",n.o1, n.o2, "      > %02d  "% cycle, e_o1.output_val( e.i1side ), gld, goodmatch
+            myprint( "%s %s %s %s %s %s %s %s %s"%( n.id, (i1,i2) ,"->",n.o1, n.o2, "      > %02d  "% cycle, e_o1.output_val( e.i1side ), gld, goodmatch))
             #if we are hunting for bad matches....
             if not goodmatch and not firstbadmatch:
                 if e.i1side == "L":
                     firstbadmatch = ( cycle, (i1, i2 ), list(( gld, n.o2 ) ))
                 else:
                     firstbadmatch = ( cycle, (i1, i2 ), list(( n.o1, gld )) )
-                #print "                           ", firstbadmatch
-                return None, firstbadmatch
+                myprint( "                           "+str( firstbadmatch))
+                #return None, firstbadmatch
 
 
         result.append( e_o1.output_val( e.i1side ) )
-    print "Base", result
-    print "Gold", gold
+    myprint( "Base %s"%str( result))
+    myprint( "Gold %s"%str( gold))
 
     if not firstbadmatch:
         firstbadmatch = ( 17, (0,0), truth[ (0,0 ) ] )
@@ -255,11 +255,16 @@ graph_dump = False
 short_ee = "021201"
 input_ee = "02120112100002120"
 
-# do_all( circuit_a, short_ee, gold_a )
-# do_all( circuit_b, short_ee, gold_b )
-# do_all( circuit_c, short_ee, gold_c )
-# do_all( circuit_d, short_ee, gold_d )
-# sys.exit(0)
+graph_dump = True
+#do_all( circuit_a, input_ee, gold_a )
+##do_all( circuit_b, input_ee, gold_b )
+#sys.exit(0)
+
+do_all( circuit_a, short_ee, gold_a )
+do_all( circuit_b, short_ee, gold_b )
+do_all( circuit_c, short_ee, gold_c )
+do_all( circuit_d, short_ee, gold_d )
+sys.exit(0)
 
 # generate a single dimensional list of indexes to truth table
 tindex = []
