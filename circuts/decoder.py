@@ -124,10 +124,10 @@ def decode( circut ):
     myprint(  "}" )
 
 
-def process_input( inputbitsx, gold ):
+def process_input( inputbits, gold ):
     #print "------------------------------------------------------------------"
-    inputbits = [str(i) for i in inputbitsx]
-    gold = [ int(i) for i in list(gold) ]
+    #inputbits = [str(i) for i in inputbitsx]
+    #gold = [ int(i) for i in list(gold) ]
     e = cgate.all[-1]
     e_o1 = cgate.all[ int( e.i1node ) ]
 
@@ -169,9 +169,12 @@ def process_input( inputbitsx, gold ):
     return result, firstbadmatch
 
 
-def do_all( circuit, input, gold ):
+def do_all( circuit, inputx, gold ):
+
     decode( circuit )
-    return process_input( input, gold )
+    inputx = [str(i) for i in inputx]
+    gold = [ int(i) for i in list(gold) ]
+    return process_input( inputx, gold )
 
 
 
@@ -278,11 +281,15 @@ def gen_mutate_to_all_truth_tables(index):
                 truth[ tindex[ index ] ] = ( lout, rout )
                 for i in gen_mutate_to_all_truth_tables( index + 1 ):
                     yield 1
-                
+
+decode( circuit_a )
+inputx = [str(i) for i in input_ee]
+gold = [ int(i) for i in list(gold_a) ]
+
 for i in gen_mutate_to_all_truth_tables( 1 ):
     
     #print [ truth[t] for t in tindex ]
-    r, b = do_all( circuit_a, input_ee, gold_a )
+    r, b = process_input( inputx, gold )
     if r:
         print "A===================\n"
         print truth
@@ -300,6 +307,7 @@ for i in gen_mutate_to_all_truth_tables( 1 ):
                     print truth
                     print "Success"
                     sys.exit(0)
-
-print "Fail"                    
+        # if we are going to perfom circuit_a again - need to re-decode it
+        decode( circuit_a )
+print "Fail"          
                 
