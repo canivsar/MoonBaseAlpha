@@ -125,13 +125,13 @@ def decode( circut ):
 
 
 def process_input( inputbitsx, gold ):
-    print "------------------------------------------------------------------"
+    #print "------------------------------------------------------------------"
     inputbits = [str(i) for i in inputbitsx]
     gold = [ int(i) for i in list(gold) ]
     e = cgate.all[-1]
     e_o1 = cgate.all[ int( e.i1node ) ]
 
-    print inputbitsx, e.i1side
+    #print inputbitsx, e.i1side
 
     for n in cgate.all:
         n.o1 = cgate.default_o1
@@ -149,15 +149,15 @@ def process_input( inputbitsx, gold ):
             goodmatch = e_o1.output_val( e.i1side ) == gld
             if goodmatch:
                 goodmatch =" "
-            print n.id, (i1,i2) ,"->",n.o1, n.o2, "      > %02d  "% cycle, e_o1.output_val( e.i1side ), gld, goodmatch
+            #print n.id, (i1,i2) ,"->",n.o1, n.o2, "      > %02d  "% cycle, e_o1.output_val( e.i1side ), gld, goodmatch
             #if we are hunting for bad matches....
             if not goodmatch and not firstbadmatch:
                 if e.i1side == "L":
                     firstbadmatch = ( cycle, (i1, i2 ), list(( gld, n.o2 ) ))
                 else:
                     firstbadmatch = ( cycle, (i1, i2 ), list(( n.o1, gld )) )
-                print "                           ", firstbadmatch
-                #return firstbadmatch
+                #print "                           ", firstbadmatch
+                return None, firstbadmatch
 
 
         result.append( e_o1.output_val( e.i1side ) )
@@ -252,34 +252,54 @@ graph_dump = False
 short_ee = "021201"
 input_ee = "02120112100002120"
 
-do_all( circuit_a, short_ee, gold_a )
-do_all( circuit_b, short_ee, gold_b )
-do_all( circuit_c, short_ee, gold_c )
-do_all( circuit_d, short_ee, gold_d )
-sys.exit(0)
+# do_all( circuit_a, short_ee, gold_a )
+# do_all( circuit_b, short_ee, gold_b )
+# do_all( circuit_c, short_ee, gold_c )
+# do_all( circuit_d, short_ee, gold_d )
+# sys.exit(0)
 
-for do1 in range(3):
-    cgate.default_o1 = do1
-    for do2 in range(3):
-        cgate.default_o2 = do2
-        for i in truth:
-            truth[i] = [0,0]
-            
-        for i in xrange(1000):
-            
-            r = []
-            r.append( do_all( circuit_a, input_ee, gold_a ) )
-            r.append( do_all( circuit_b, input_ee, gold_b ) )
-            r.append( do_all( circuit_c, input_ee, gold_c ) )
-            r.append( do_all( circuit_d, input_ee, gold_d ) )
-            r.sort()
-            print r
-            metric = sum( i[0] for i in r )
-            metric = r[0][0]
-            
-            fix = r[0]
-            fix = random.choice(r)
-            print " metric = %3d"% metric, "(%d,%d) Fixing truth at "%(do1,do2),fix
-            truth[ fix[1] ] = fix[2]
-            
+# generate a single dimensional list of indexes to truth table
+tindex = []
+for lin in range(3):
+    for rin in range(3):
+        tindex.append( (lin, rin ))
         
+def gen_mutate_to_all_truth_tables(index):
+    if index == 8:
+        for lout in range(3):
+            for rout in range(3):
+                truth[ (2,2) ] = ( lout, rout )
+                yield 1
+    else:
+        if index < 5:
+            print [ truth[i] for i in tindex ]
+        for lout in range(3):
+            for rout in range(3):
+                truth[ tindex[ index ] ] = ( lout, rout )
+                for i in gen_mutate_to_all_truth_tables( index + 1 ):
+                    yield 1
+                
+for i in gen_mutate_to_all_truth_tables( 1 ):
+    
+    #print [ truth[t] for t in tindex ]
+    r, b = do_all( circuit_a, input_ee, gold_a )
+    if r:
+        print "A===================\n"
+        print truth
+        r, b = do_all( circuit_b, input_ee, gold_b )
+        if r:
+            print "B===================\n"
+            print truth
+            r, b = do_all( circuit_c, input_ee, gold_c )
+            if r:
+                print "C===================\n"
+                print truth
+                r, b = do_all( circuit_d, input_ee, gold_d )
+                if r:
+                    print "D===================\n"
+                    print truth
+                    print "Success"
+                    sys.exit(0)
+
+print "Fail"                    
+                
