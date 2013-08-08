@@ -1,0 +1,114 @@
+1L:
+1R0R0#1R0R,
+X0L0#X0L:
+1L
+
+
+
+
+submitted:
+
+first.txt
+
+1L:
+
+1R0R0#1R0R,
+
+X0L0#X0L:
+
+1L
+
+------------------------ 
+
+Result:
+
+circuit output starts with
+
+    01022210002211022
+
+this is an illegal prefix.
+
+Car:
+
+0
+
+ 
+--------------------------------------------------------
+
+1L:
+1L0L0#1L0L,
+X0L0#X0L:
+1L
+
+checking node ( 0 , 1L0L0#1L0L )
+inconsistent input connection
+    ( 1L , X , 0L )
+Car:0
+
+--------------------------------------------------------
+1L:
+1R0L0#1L0L,
+X0L0#X0L:
+1L
+
+checking node ( 0 , 1R0L0#1L0L )
+inconsistent input connection
+    ( 0L , 1L , 0R )
+Car:0
+
+
+--------------------------------------------------------
+
+1L:
+1R0R0#1L0L,
+X0L0#X0L:
+1L
+
+checking node ( 0 , 1R0R0#1L0L )
+inconsistent input connection
+    ( 0R , 0L , 0R )
+
+-------------------------
+1L:
+1R0R0#1L0R,
+X0L0#X0L:
+1L
+
+checking node ( 0 , 1R0R0#1L0R )
+inconsistent output connection
+    ( 1L , X , 0L )
+Car:
+
+-------------------------
+
+1R0R0#1R0L,
+X0L0#X0L:
+
+checking node ( 0 , 1R0R0#1R0L )
+inconsistent input connection
+    ( 0R , 0L , 0R )
+
+------------------------------------
+1L:
+0R1R0#1R0R,
+X0L0#X0L:
+1L
+checking node ( 0 , 0R1R0#1R0R )
+inconsistent input connection
+    ( 0R , 0R , 0L )
+------------------------------------
+
+1R0R0#0R1R,
+X0L0#X0L:
+
+checking node ( 0 , 1R0R0#0R1R )
+inconsistent input connection
+    ( 0R , 1R , 0R )
+Car:0
+
+Fuel:
+
+
+
+
+-fno-stack-protector

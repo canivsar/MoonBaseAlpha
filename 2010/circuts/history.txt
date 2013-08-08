@@ -1,0 +1,500 @@
+   45  killall ssh ; gg2
+   46  python
+   47  gg2
+   48  killall ssh ; gg2
+   49  killall ssh
+   50  gg2
+   51  killall ssh
+   52  gg2
+   53  ping douma.net
+   54  killall ssh
+   55  gg2
+   56  killall ssh
+   57  ifconfig
+   58  ifconfig | grep inet
+   59  ping google.com
+   60  nslookup jdsu.com
+   61  gg2
+   62  killall ssh
+   63  gg2
+   64  killall ssh
+   65  ls
+   66  cp foo.txt Downloads/
+   67  ls -l Downloads/foo.txt 
+   68  pwd
+   69  cd Do
+   70  gg2
+   71  gg2
+   72  killall ssh
+   73  gg2
+   74  killall ssh
+   75  gg2
+   76  killall ssh
+   77  gg2
+   78  killall ssh
+   79  gg2
+   80  killall ssh
+   81  gg2
+   82  killall ssh
+   83  gg2
+   84  killall ssh
+   85  gg2
+   86  killall ssh
+   87  gg2
+   88   
+   89  killall ssh
+   90  killall ssh
+   91  gg2
+   92  killall ssh
+   93  gg2
+   94  killall ssh
+   95  gg2
+   96  killall ssh
+   97  œ
+   98  gg2
+   99  killall ssh
+  100  œ
+  101  gg2
+  102  killall ssh
+  103  gg2
+  104  killall ssh
+  105  gg2
+  106  killall ssh
+  107  gg2
+  108  killall ssh
+  109  gg2
+  110  killall ssh
+  111  gg2
+  112  killall ssh
+  113  killall ssh
+  114  gg2
+  115  killall ssh
+  116  gg2
+  117  cd .ssh/
+  118  ls
+  119  cat id_rsa.pub 
+  120  mkdir backup_of_keys
+  121  ls
+  122  cp id_rsa id_rsa.pub known_hosts backup_of_keys/
+  123  ls -l backup_of_keys/
+  124  ssh-keygen 
+  125  ls -l
+  126  cat id_rsa.pub 
+  127  ls -l
+  128  rm id_rsa
+  129  rm id_rsa.pub 
+  130  cp backup_of_keys/* .
+  131  ls
+  132  ls -l
+  133  cat id_rsa.pub 
+  134  md5sum *
+  135  md5sum backup_of_keys/*
+  136  cd
+  137  cd icfp/
+  138  ls
+  139  mkdir 2010
+  140  cd 2010
+  141  git clone git@github.com:canivsar/MoonBaseAlpha.git
+  142  gg2
+  143  killall ssh
+  144  gg2
+  145  œ
+  146  cd icfp/2010/
+  147  ls
+  148  git clone git@github.com:canivsar/MoonBaseAlpha.git
+  149  git clone git@github.com:canivsar/MoonBaseAlpha.git
+  150  ls
+  151  cd MoonBaseAlpha/
+  152  emacs README 
+  153  git commit -a -m "easy commit message about apple weenneis"
+  154  git push
+  155  cd .ssh/
+  156  cat id_rsa.pub 
+  157  killall ssh
+  158  gg2
+  159  gg2
+  160  cd icfp/
+  161  cd 2010
+  162  ls
+  163  cd MoonBaseAlpha/
+  164  git pull
+  165  git config --list
+  166  git config --global user.name George
+  167  git config --list
+  168  ls
+  169  git pull
+  170  git log
+  171  git log --graph
+  172  git log --graph -R
+  173  git log --graph 
+  174  git status
+  175  git checkout -b Crazy d638
+  176  ls -l
+  177  cat roman.py 
+  178  ./roman.py 
+  179  cat README 
+  180  emacs README 
+  181  git config --global core.editor emacs
+  182  git commit -a
+  183  emacs --help
+  184  emacs -n- README 
+  185  cat ~/bin/emacs
+  186  git config --global core.editor emacswait
+  187  git status
+  188  git commit -a
+  189  ls /Applications/myapps/Aquamacs.app/Contents/MacOS/bin/ema*
+  190  ls /Applications/myapps/Aquamacs.app/Contents/MacOS/bin
+  191  ls -l /Applications/myapps/Aquamacs.app/Contents/MacOS/bin
+  192  cat ~/bin/emacs
+  193  git config --global core.editor /Applications/myapps/Aquamacs.app
+  194  git commit -a
+  195  git config --global core.editor "open -a /Applications/myapps/Aquamacs.app"
+  196  git commit -a
+  197  open --help
+  198  git config --global core.editor "open -a /Applications/myapps/Aquamacs.app -W""
+  199  "
+  200  git config --global core.editor "open -a /Applications/myapps/Aquamacs.app -W"
+  201  git commit -a
+  202  emacs README 
+  203  git commit -a
+  204  emacs README 
+  205  git commit -a
+  206  git config --global core.editor "open --wait-apps --new -a /Applications/myapps/Aquamacs.app "
+  207  git config --global core.editor "open --wait-apps --new -a /Applications/myapps/Aquamacs.app"
+  208  git commit -a
+  209  emacs README 
+  210  git commit -a
+  211  textedit
+  212  TextEdit
+  213  echo git config --global core.editor "open --wait-apps --new -a /Applications/myapps/Aquamacs.app" > workedonce.txt
+  214  echo git config --global core.editor "open --wait-apps --new -a /Applications/myapps/Aquamacs.app" > worked_but_slow.txt
+  215  git config --global core.editor "open --wait-apps --new -e"
+  216  git commit -a
+  217  move worked_but_slow.txt ~
+  218  mv  worked_but_slow.txt ~
+  219  git add workedonce.txt 
+  220  git commit 
+  221  git log
+  222  git push 
+  223  git push Crazy
+  224  git help push 
+  225  git push origin HEAD
+  226  cd
+  227  open -e .git-completion.sh
+  228  touch  .git-completion.sh
+  229  open -e .git-completion.sh
+  230  ls -la .*
+  231  ls -lad .*
+  232  cat .profile
+  233  /Applications/TextEdit.app .profile
+  234  Open /Applications/TextEdit.app .profile
+  235  cd bin
+  236  cp emacs emacswait
+  237  emacs emacswait 
+  238  ls -l e*
+  239  emacswait emacs
+  240  emacsclient --help
+  241  emacsclient --help
+  242  emacswait --help
+  243  emacswait emacswait
+  244  ls
+  245  cd icfp/2010/MoonBaseAlpha/
+  246  ls
+  247  git checkout master
+  248  ls
+  249  ./roman.py 
+  250  ls -l
+  251  git merge Crazy
+  252  git status
+  253  git rm workedonce.txt
+  254  git rm -f workedonce.txt
+  255  git status
+  256  emacs README 
+  257  git status
+  258  git add README
+  259  git status
+  260  git commit
+  261  git log --graph
+  262  git push
+  263  ls
+  264  git push origin Crazy 
+  265  git log 26c
+  266  git log 26c85
+  267  git diff 26c85
+  268  emacs roman.py 
+  269  ls -l
+  270  ./roman.py  > tt
+  271  ./roman.py  > tt
+  272  ./roman.py  > tt
+  273  ./roman.py  > tt
+  274  tail tt
+  275  wc tt
+  276  ./roman.py  > tt
+  277  wc tt
+  278  cp tt gold
+  279  ./roman.py  | wc
+  280  ./roman.py  > tt
+  281  diff ss tt
+  282  diff gold tt
+  283  diff gold tt | wc
+  284  ./roman.py  > tt
+  285  wc tt
+  286  diff gold tt 
+  287  diff gold tt | wc
+  288  diff gold tt | head
+  289  diff gold tt | head -40
+  290  ./roman.py  > tt
+  291  ./roman.py  > tt
+  292  ./roman.py  > tt
+  293  ./roman.py  > tt
+  294  wc tt
+  295  diff gold  tt
+  296  diff gold  tt | head -40
+  297  emacs tt
+  298  rm gold
+  299  git stash
+  300  cat roman.py 
+  301  ./roman.py > gold
+  302  cp tt gold 
+  303  ls
+  304  git help stash
+  305  git stash list
+  306  git stash apply
+  307  git stash list
+  308  git help stash
+  309  git stash drop
+  310  ./roman.py > tt
+  311  diff tt gold 
+  312  cp tt gold
+  313  git add gold
+  314  git status
+  315  git add roman.py
+  316  git commit -m "refactored roman.py"
+  317  ./roman.py | diff gold -
+  318  ./roman.py > tt
+  319  wc tt
+  320  ./roman.py | diff gold -
+  321  ./roman.py | diff gold -
+  322  ./roman.py | diff gold -
+  323  ./roman.py | diff gold -
+  324  ./roman.py | diff gold -
+  325  ./roman.py | diff gold - | head
+  326  ./roman.py | diff gold - | head
+  327  ./roman.py | diff gold - 
+  328  git diff
+  329  git commit -a  -m "refactored to eliminate 121000"
+  330  ./roman.py | diff gold - 
+  331  wc gold
+  332  ./roman.py | diff gold - 
+  333  git status
+  334  rm tt
+  335  rm tt.~1~ 
+  336  git status
+  337  ls -l
+  338  python roman.py
+  339  ls -l
+  340  ls -la
+  341  git commit -a -m "that's it - no more refactoring :) "
+  342  git push
+  343  killall ssh
+  344  gg2
+  345  killall ssh
+  346  killall ssh
+  347  gg2
+  348  gg2
+  349  killall ssh
+  350  gg2
+  351  gg2
+  352  killall ssh
+  353  gg2
+  354  killall ssh
+  355  killall ssh
+  356  gg2
+  357  killall ssh
+  358  gg2
+  359  killall ssh
+  360  gg2
+  361  killall ssh
+  362  gg2
+  363  killall ssh
+  364  cd icfp/
+  365  cd 2010
+  366  ls
+  367  rm -r -f circuts/
+  368  cd icfp/
+  369  ls
+  370  cd 2010
+  371  ls
+  372  mkdir circuts
+  373  cd circuts/
+  374  emacs pass.py
+  375  python pass.py
+  376  python pass.py
+  377  cd ..
+  378  cd MoonBaseAlpha/
+  379  ls
+  380  ls -l
+  381  ls
+  382  rm ICFPcontest\ -\ Task
+  383  rm ICFPcontest\ -\ Task*
+  384  rm ICFPcontest\ -\ Task_files/*
+  385  rm -r -f ICFPcontest\ -\ Task_files/
+  386  ls
+  387  git add Task.html
+  388  mkdir circuts
+  389  cp ../circuts/first.txt circuts/
+  390  git add circuts/first.txt
+  391  git commit -a -m "task and first circut attempt"
+  392  git push
+  393  git pull
+  394  cat README 
+  395  git status
+  396  git status
+  397  git push
+  398  cd circuts/
+  399  touch decoder.py
+  400  python decoder.py
+  401  python decoder.py
+  402  python decoder.py
+  403  python decoder.py
+  404  python decoder.py
+  405  python decoder.py
+  406  python decoder.py
+  407  python decoder.py
+  408  python decoder.py
+  409  pwd
+  410  ls
+  411  git add decoder.py
+  412  git commit -a -m "decoder wip"
+  413  git push
+  414  python decoder.py
+  415  ls > tt
+  416  emacs tt
+  417  python decoder.py
+  418  python decoder.py > tt
+  419  python decoder.py > tt.dot
+  420  python decoder.py > tt.dot
+  421  ls -l
+  422  git add tt.dot example_render.pdf
+  423  git commit -a -m "first render of example - not clear on Forward vs backward"
+  424  git push
+  425  python decoder.py > tt.dot
+  426  emacs tt.dot
+  427  git status
+  428  git add example.pdf
+  429  git status
+  430  git commit -a -m "Added pdf of decoder output - fixed several bugs since first pass"
+  431  emacs tt.dot
+  432  git status
+  433  git status
+  434  git commit -a -m "tweaked pdf to only show outputs"
+  435  git push
+  436  cd icfp/2010/MoonBaseAlpha/
+  437  cd circuts/
+  438  git status
+  439  git commit -a -m "latest"
+  440  git push
+  441  ls
+  442  ls ..
+  443  ../Task.html
+  444  Open ../Task.html
+  445  git status
+  446  git commit -a -m "updated pdf with 'input' #, added several submit tests to first.txt"
+  447  git push
+  448  emacs tt.dot
+  449  git status
+  450  em example_render.pdf 
+  451  rm example_render.pdf 
+  452  git status
+  453  git commit -a -m "added input labels - deleted obs pdf"
+  454  git push
+  455  git pull
+  456  ls
+  457  ls -l
+  458  chmod +x decoder.py
+  459  ./decoder.py 
+  460  ./decoder.py 
+  461  cat decoder.py
+  462  git pull
+  463  ls -ltr
+  464  git diff decoder.py
+  465  cat truth_table.py 
+  466  cat gen_truth_table.py 
+  467  pwd
+  468  pwd
+  469  ls -l
+  470  cat andy.py 
+  471  git log
+  472  git log > tt
+  473  emacs tt
+  474  cat decoder.py
+  475  gg2
+  476  git pull
+  477  git diff decoder.py
+  478  git checkout decoder.py
+  479  git pull
+  480  ./decoder.py 
+  481  ./decoder.py 
+  482  emacs decoder.py
+  483  emacs decoder.py
+  484  ./decoder.py 
+  485  ./decoder.py  > l3.dot
+  486  emacs l3.dot 
+  487  ./decoder.py  > l3.dot
+  488  ./decoder.py  
+  489  ./compiler.py 
+  490  ./compiler.py 
+  491  git commit -a -m "cosmetic clean up - compiler handles blank lines, so put triple quotes on their own lines"
+  492  ./compiler.py 
+  493  ./decoder.py 
+  494  ./decoder.py 
+  495  ./decoder.py 
+  496  ./decoder.py 
+  497  ./decoder.py 
+  498  ./compiler.py 
+  499  ./decoder.py 
+  500  ./decoder.py 
+  501  cd icfp/
+  502  cd 2010
+  503  cd MoonBaseAlpha/
+  504  git pull
+  505  cd circuts/
+  506  ls
+  507  ./decoder.py 
+  508  git diff
+  509  git commit -a -m "wip in figuring out truth table"
+  510  git push
+  511  ./decoder.py 
+  512  emacs truth_table.py
+  513  ./decoder.py 
+  514  ./decoder.py 
+  515  ./decoder.py 
+  516  ./decoder.py 
+  517  ./decoder.py 
+  518  ./decoder.py 
+  519  ./decoder.py 
+  520  git commit -a -m "partial progress"
+  521  ./decoder.py 
+  522  ./decoder.py 
+  523  ./decoder.py 
+  524  ./decoder.py 
+  525  ./decoder.py 
+  526  ./decoder.py 
+  527  ./decoder.py  | sort
+  528  ./decoder.py  
+  529  ./decoder.py  
+  530  ./decoder.py  
+  531  ./decoder.py  
+  532  ./decoder.py  | sort
+  533  ./decoder.py  | grep False
+  534  ./decoder.py  | grep False | wc
+  535  ./decoder.py | grep -e "> 00" -e "> 01" -e "> 02" | grep False | wc
+  536  ./decoder.py | grep -e "> 00" -e "> 01" -e "> 02" | grep False 
+  537  ./decoder.py | grep -e "> 00" -e "> 01" -e "> 02" -e "> 02" || grep False 
+  538  ./decoder.py | grep -e "> 00" -e "> 01" -e "> 02" -e "> 02" | grep False 
+  539  ./decoder.py | grep -e "> 00" -e "> 01" -e "> 02" -e "> 02" -e "> 04"| grep False 
+  540  ./decoder.py | grep -e "> 00" -e "> 01" -e "> 02" -e "> 02" -e "> 04" -e "> 05" || grep False 
+  541  ./decoder.py | grep -e "> 00" -e "> 01" -e "> 02" -e "> 02" -e "> 04" -e "> 05" | grep False 
+  542  ./decoder.py | grep -e "(1, 2)"
+  543  ./decoder.py | grep -e "(1, 2)" | sort
+  544  history > history.txt

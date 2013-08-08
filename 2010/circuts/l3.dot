@@ -1,0 +1,19 @@
+digraph G {
+# 0           3R2L0#3R2L  ('3', 'R', '2', 'L', '3', 'R', '2', 'L')
+# 1           1L1R0#1L1R  ('1', 'L', '1', 'R', '1', 'L', '1', 'R')
+# 2           0R2R0#0R2R  ('0', 'R', '2', 'R', '0', 'R', '2', 'R')
+#             X0L0#X0L  ('0', 'L', '0', 'L')
+# s 3R2L0#3R2L ('3', 'R', '2', 'L', '3', 'R', '2', 'L') 3R 2L 3R 2L
+g0 -> g3 [label="o1 R - i1L"];
+g0 -> g2 [label="o2 L - i1R"];
+# s 1L1R0#1L1R ('1', 'L', '1', 'R', '1', 'L', '1', 'R') 1L 1R 1L 1R
+g1 -> g1 [label="o1 L - i1L"];
+g1 -> g1 [label="o2 R - i1L"];
+# s 0R2R0#0R2R ('0', 'R', '2', 'R', '0', 'R', '2', 'R') 0R 2R 0R 2R
+g2 -> g0 [label="o1 R - i2L"];
+g2 -> g2 [label="o2 R - i2R"];
+# External Gate X0L0#X0L  ('0', 'L', '0', 'L')
+g3 [label="External g3", shape=square ];
+g3 -> g0 [label="I1 L", color=green ];
+g3 -> g0 [label="o1 L - i1R"];
+}
